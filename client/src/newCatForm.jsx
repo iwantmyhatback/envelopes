@@ -12,11 +12,17 @@ class NewCatForm extends React.Component {
   }
 
   onChange(event) {
-
+    this.setState({
+      name: event.target.value
+    });
   }
 
   onSubmit(event) {
-
+    event.preventDefault();
+    this.props.addHandler(this.state.name);
+    this.setState({
+      name: ""
+    });
   }
 
   render() {

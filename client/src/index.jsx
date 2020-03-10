@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 
 import MainList from "./mainList.jsx";
 import SpendForm from "./spendForm.jsx";
@@ -31,8 +32,18 @@ class App extends React.Component {
 
   }
 
-  addCategory(id) {
-
+  addCategory(name) {
+    axios.post("/cat", {
+      name: name
+    })
+      .then((data) => {
+        this.setState({
+          categories: data.data
+        });
+      })
+      .catch((err) => {
+        console.error("Error adding envelope");
+      });
   }
 
   updateCategory(id, field, amount) {
@@ -49,7 +60,7 @@ class App extends React.Component {
         <h1>Envelope</h1>
         <h2>Funds: ${this.state.totalFunds}</h2>
         <h3>My envelopes:</h3>
-        <MainList categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
+        <MainList id="main-list" categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
         <SpendForm handler={this.updateCategoryBound} />
         <Graph />
       </div>
