@@ -1,13 +1,16 @@
 import React from "react";
 
+import AddMoneyForm from "./addMoneyForm.jsx";
+
 const Category = ({category, updateHandler, deleteHandler}) => {
   return (
-  <div>
+  <div className="box">
     <h4>{category.name}</h4>
     <div>${category.now}</div>
     <br />
-    <button type="button" onClick={() => updateHandler(category.name, "now", 0)}>Clear</button>
-    <button type="button" onClick={() => deleteHandler(category.name)}>Delete</button>
+    <AddMoneyForm updateHandler={updateHandler} />
+    <button type="button" onClick={() => updateHandler(category.id, "now", 0)}>Clear</button>
+    <button type="button" onClick={() => deleteHandler(category.id)}>Delete</button>
   </div>
   );
 };

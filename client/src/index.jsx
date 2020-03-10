@@ -31,15 +31,15 @@ class App extends React.Component {
 
   }
 
-  addCategory(name) {
+  addCategory(id) {
 
   }
 
-  updateCategory(name, field, amount) {
+  updateCategory(id, field, amount) {
 
   }
 
-  deleteCategory(name) {
+  deleteCategory(id) {
 
   }
 
