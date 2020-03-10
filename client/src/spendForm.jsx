@@ -5,7 +5,7 @@ class SpendForm extends React.Component {
     super(props);
 
     this.state = {
-      category: "Select",
+      categoryId: "Select",
       amount: ""
     };
     this.onChangeBound = this.onChange.bind(this);
@@ -13,7 +13,11 @@ class SpendForm extends React.Component {
   }
 
   onChange(event) {
-
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
   }
 
   onSubmit(event) {
@@ -22,7 +26,7 @@ class SpendForm extends React.Component {
 
   render() {
     {var options = this.props.categories.map((cat) => {
-      return <option key={cat.id} value={cat.id}>{cat.name}</option>
+      return <option key={cat.id} name={cat.id} value={cat.id}>{cat.name}</option>
     })}
     return (
     <div>
@@ -34,7 +38,7 @@ class SpendForm extends React.Component {
         </select>
         <label>
           Amount: $
-          <input type="text" name="amount" value={this.state.amount} />
+          <input type="text" name="amount" value={this.state.amount} onChange={this.onChangeBound} />
         </label>
         <input type="submit" value="Submit" />
       </form>

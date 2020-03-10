@@ -5,6 +5,7 @@ import axios from "axios";
 import MainList from "./mainList.jsx";
 import SpendForm from "./spendForm.jsx";
 import Graph from "./graph.jsx";
+import { cast } from "bluebird";
 
 
 class App extends React.Component {
@@ -13,7 +14,7 @@ class App extends React.Component {
 
     this.state = {
       totalFunds: 0,
-      categories: [{id: 1, name: "rent", now: 1000}, {id: 2, name: "groceries", now: 150}]
+      categories: [{id: null, name: null, now: null}]
     };
     this.updateCategoryBound = this.updateCategory.bind(this);
     this.deleteCategoryBound = this.deleteCategory.bind(this);
@@ -21,25 +22,46 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    axios.get("/funds")
+      .then((data) => {
+        this.setState({
+          totalFunds: data.data
+        });
+      })
+      .catch((err) => {
+        console.log("Error fetching funds");
+      });
+    axios.get("/cat")
+      .then((data) => {
+        this.setState({
+          categories: data.data
+        });
+      })
+      .catch((err) => {
+        console.log("Error fetching categories");
+      });
   }
 
-  getTotalFunds() {
-
+  setCategories(cats) {
+    this.setState({
+      categories: cats
+    });
   }
 
-  getAllCategories() {
+  // getTotalFunds() {
 
-  }
+  // }
+
+  // getAllCategories() {
+
+  // }
 
   addCategory(name) {
     axios.post("/cat", {
       name: name
     })
       .then((data) => {
-        this.setState({
-          categories: data.data
-        });
+        this.setCategories(data.data);
       })
       .catch((err) => {
         console.error("Error adding envelope");
@@ -47,11 +69,32 @@ class App extends React.Component {
   }
 
   updateCategory(id, field, amount) {
-
+    axios.put("/cat", {
+      id: id,
+      [field]: amount
+    })
+      .then((data) => {
+        this.setCategories(data.data);
+      })
+      .catch((err) => {
+        console.log("Error updating envelope");
+      });
   }
 
   deleteCategory(id) {
-
+    axios({
+      url: "/cat",
+      method: "delete",
+      params: {
+        id: id
+      }
+    })
+      .then((data) => {
+        this.setCategories(data.data);
+      })
+      .catch((err) => {
+        console.log("Error deleting envelope");
+      });
   }
 
   render() {
