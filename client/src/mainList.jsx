@@ -8,7 +8,7 @@ const MainList = ({categories, updateHandler, deleteHandler, addHandler}) => {
 
   {var catItems = categories.map((cat) => {
     return (
-      <div key={cat.name}>
+      <div key={cat.id}>
         <Category category={cat} updateHandler={updateHandler} deleteHandler={deleteHandler} />
       </div>
     );

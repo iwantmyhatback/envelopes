@@ -5,7 +5,6 @@ import axios from "axios";
 import MainList from "./mainList.jsx";
 import SpendForm from "./spendForm.jsx";
 import Graph from "./graph.jsx";
-import { cast } from "bluebird";
 
 
 class App extends React.Component {
