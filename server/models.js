@@ -43,10 +43,12 @@ model.editCategory = putBody => {
 };
 
 model.deleteCategory = deleteQuery => {
-  let instance = deleteQuery.id
+  let instance = [deleteQuery.id];
+  return db
     .asyncQuery("DELETE FROM categories WHERE id=?", instance)
     .then(data => {
       console.log("*** Successfully Deleted Category Entry From DB ***");
+
       return db
         .asyncQuery("SELECT * FROM categories")
         .then(data => {

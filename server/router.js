@@ -35,6 +35,7 @@ router
     res.send("PUT cat");
   })
   .delete((req, res) => {
+    console.log(req.query);
     model
       .deleteCategory(req.query)
       .then(data => {
@@ -50,9 +51,9 @@ router
 router
   .route("/funds")
   .get((req, res) => {
-    model.getFunds().then(data => {
-      //SEND BACK NEW FUND TOTAL
-    });
+    // model.getFunds().then(data => {
+    //   //SEND BACK NEW FUND TOTAL
+    // });
     res.send("GET funds");
   })
   .put((req, res) => {
