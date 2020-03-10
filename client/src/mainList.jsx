@@ -14,7 +14,7 @@ const MainList = ({categories, updateHandler, deleteHandler, addHandler}) => {
     );
   })}
   return (
-  <div>
+  <div id="main-list">
     <div className="box">
       <NewCatForm addHandler={addHandler} />
     </div>

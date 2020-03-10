@@ -17,6 +17,7 @@ class AddMoneyForm extends React.Component {
   }
 
   onSubmit(event) {
+    event.preventDefault();
 
   }
 
