@@ -4,10 +4,16 @@ let model = require("./models.js");
 router
   .route("/cat")
   .get((req, res) => {
-    model.getAllCategories().then(data => {
-      //SEND BACK ALL CATEGORY DATA
-    });
-    res.send("GET cat");
+    model
+      .getAllCategories()
+      .then(data => {
+        console.log("*** Successfully Sent Client All Exisiting Category Entries ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Client All Existing Category Entries !!!");
+        res.sendStatus(500);
+      });
   })
   .post((req, res) => {
     model
