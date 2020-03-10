@@ -1,11 +1,12 @@
 import React from "react";
 
-class NewCatForm extends React.Component {
+
+class AddMoneyForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: ""
+      amount: "Amount"
     };
     this.onChangeBound = this.onChange.bind(this);
     this.onSubmitBound = this.onSubmit.bind(this);
@@ -21,17 +22,16 @@ class NewCatForm extends React.Component {
 
   render() {
     return (
-    <div>
-      <h4>Create a new envelope:</h4>
       <form onSubmit={this.onSubmitBound}>
-        <input type="text" name="name" value={this.state.name} onChange={this.onChangeBound} />
-        <br />
-        <input type="submit" value="Create" />
+        <label>
+          Add money:
+          <input type="text" name="amount" value={this.state.amount} onChange={this.onChangeBound} />
+        </label>
+        <input type="submit" value="Add" />
       </form>
-    </div>
     );
   }
 
 }
 
-export default NewCatForm;
+export default AddMoneyForm;
