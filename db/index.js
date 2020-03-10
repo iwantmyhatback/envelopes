@@ -1,4 +1,4 @@
-let db = require("mysql");
+let mysql = require("mysql");
 let config = require("./config.js");
 let Promise = require("bluebird");
 
@@ -9,15 +9,13 @@ let connection = mysql.createConnection({
   database: config.database
 });
 
-let asyncConnect = Promise.promisify(connection);
+let asyncConnect = Promise.promisify(connection.connect);
 
-connection
-  .connect()
-  .then(data => {
-    // console.log(data);
-    console.log("*** Connection Success! ***");
-  })
-  .catch(err => {
+connection.connect(err => {
+  if (err) {
     // console.error(err);
     console.error("!!! Connection Error !!!");
-  });
+  } else {
+    console.log("*** Connection Success! ***");
+  }
+});
