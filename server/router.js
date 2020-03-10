@@ -35,10 +35,16 @@ router
     res.send("PUT cat");
   })
   .delete((req, res) => {
-    model.deleteCategory().then(data => {
-      //SEND BACK ALL CATEGORY DATA
-    });
-    res.send("DELETE cat");
+    model
+      .deleteCategory(req.query)
+      .then(data => {
+        console.log("*** Successfully Sent Client Non-Delted Categories ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Client Non-Delted Categories !!!");
+        res.sendStatus(500);
+      });
   });
 
 router

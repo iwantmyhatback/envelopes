@@ -40,7 +40,27 @@ model.addCategory = postBody => {
 
 model.editCategory = () => {};
 
-model.deleteCategory = () => {};
+model.deleteCategory = deleteQuery => {
+  let instance = [deleteQuery.id]
+    .asyncQuery("DELETE FROM categories WHERE id=?", instance)
+    .then(data => {
+      console.log("*** Successfully Deleted Category Entry From DB ***");
+      return db
+        .asyncQuery("SELECT * FROM categories")
+        .then(data => {
+          console.log("*** Successfully Returned All Non-Deleted Category Entries from DB ***");
+          return data;
+        })
+        .catch(err => {
+          console.error("!!! Error Returning All Non-Deleted Category Entries from DB !!!");
+          return err;
+        });
+    })
+    .catch(err => {
+      console.error("!!! Error Deleting Category Entry From DB !!!");
+      return err;
+    });
+};
 
 model.getFunds = () => {};
 
