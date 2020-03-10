@@ -17,7 +17,7 @@ router
   })
   .post((req, res) => {
     model
-      .addCategory()
+      .addCategory(req.body)
       .then(data => {
         console.log("*** Successfully Sent Client Updated Categories ***");
         res.send(data);

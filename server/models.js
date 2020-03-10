@@ -15,9 +15,10 @@ model.getAllCategories = () => {
     });
 };
 
-model.addCategory = () => {
+model.addCategory = postBody => {
+  let instance = [postBody.name, 0, 0];
   return db
-    .asyncQuery('INSERT INTO categories (name, now, spent) VALUES ("junk", 1, 100);')
+    .asyncQuery("INSERT INTO categories (name, now, spent) VALUES (?,?,?);", instance)
     .then(data => {
       console.log("*** Successfully Inserted New Category Entry Into DB ***");
       return db
