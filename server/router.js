@@ -11,6 +11,7 @@ router
   })
   .post((req, res) => {
     model.addCategory().then(data => {
+      console.log(data);
       //SEND BACK ALL CATEGORY DATA
     });
     res.send("POST cat");

@@ -9,7 +9,7 @@ let connection = mysql.createConnection({
   database: config.database
 });
 
-let asyncConnect = Promise.promisify(connection.connect);
+let asyncQuery = Promise.promisify(connection.query).bind(connection);
 
 connection.connect(err => {
   if (err) {
@@ -19,3 +19,6 @@ connection.connect(err => {
     console.log("*** Connection Success! ***");
   }
 });
+
+module.exports.connection = connection;
+module.exports.asyncQuery = asyncQuery;
