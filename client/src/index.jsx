@@ -12,10 +12,11 @@ class App extends React.Component {
 
     this.state = {
       totalFunds: 0,
-      categories: []
+      categories: [{name: "rent", now: 1000}, {name: "groceries", now: 150}]
     };
     this.updateCategoryBound = this.updateCategory.bind(this);
     this.deleteCategoryBound = this.deleteCategory.bind(this);
+    this.addCategoryBound = this.addCategory.bind(this);
   }
 
   componentDidMount() {
@@ -46,9 +47,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Envelope</h1>
-        <h2>Total Funds: ${this.state.totalFunds}</h2>
+        <h2>Funds: ${this.state.totalFunds}</h2>
         <h3>My envelopes:</h3>
-        <MainList categories={this.state.categories} changeHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} />
+        <MainList categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
         <SpendForm handler={this.updateCategoryBound} />
         <Graph />
       </div>
