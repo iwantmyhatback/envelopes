@@ -38,10 +38,12 @@ model.addCategory = postBody => {
     });
 };
 
-model.editCategory = () => {};
+model.editCategory = putBody => {
+  let instance = [putBody.id].asyncQuery("DELETE FROM categories WHERE id=?", instance);
+};
 
 model.deleteCategory = deleteQuery => {
-  let instance = [deleteQuery.id]
+  let instance = deleteQuery.id
     .asyncQuery("DELETE FROM categories WHERE id=?", instance)
     .then(data => {
       console.log("*** Successfully Deleted Category Entry From DB ***");

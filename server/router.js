@@ -28,7 +28,7 @@ router
       });
   })
   .put((req, res) => {
-    model.editCategory().then(data => {
+    model.editCategory(req.body).then(data => {
       // NEED TO CONDITIONALLY SEE IF IT IS A SPEND OR EDIT UPDATE
       //SEND BACK ALL CATEGORY DATA
     });
