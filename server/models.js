@@ -8,11 +8,14 @@ model.addCategory = () => {
   return db
     .asyncQuery('INSERT INTO categories (name, now, spent) VALUES ("junk", 1, 100);')
     .then(data => {
-      console.log(data);
-      return data;
+      console.log("*** Successfully Inserted Entry Into Categories ***");
+      return db.asyncQuery("SELECT * FROM categories").then(data => {
+        console.log("*** Successfully Returned All Category Data ***");
+        return data;
+      });
     })
     .catch(err => {
-      console.error(err);
+      console.error("!!! Error Inserting Category Entry !!!");
       return err;
     });
 };

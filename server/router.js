@@ -10,14 +10,20 @@ router
     res.send("GET cat");
   })
   .post((req, res) => {
-    model.addCategory().then(data => {
-      console.log(data);
-      //SEND BACK ALL CATEGORY DATA
-    });
-    res.send("POST cat");
+    model
+      .addCategory()
+      .then(data => {
+        console.log("*** Successfully Sent Client Updated Categories ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Client Updated Categories !!!");
+        res.sendStatus(500);
+      });
   })
   .put((req, res) => {
     model.editCategory().then(data => {
+      // NEED TO CONDITIONALLY SEE IF IT IS A SPEND OR EDIT UPDATE
       //SEND BACK ALL CATEGORY DATA
     });
     res.send("PUT cat");
