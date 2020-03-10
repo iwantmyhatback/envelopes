@@ -8,7 +8,7 @@ const Category = ({category, updateHandler, deleteHandler}) => {
     <h4>{category.name}</h4>
     <div>${category.now}</div>
     <br />
-    <AddMoneyForm updateHandler={updateHandler} />
+    <AddMoneyForm category={category} updateHandler={updateHandler} />
     <button type="button" onClick={() => updateHandler(category.id, "now", 0)}>Clear</button>
     <button type="button" onClick={() => deleteHandler(category.id)}>Delete</button>
   </div>
