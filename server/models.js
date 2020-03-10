@@ -66,7 +66,18 @@ model.deleteCategory = deleteQuery => {
     });
 };
 
-model.getFunds = () => {};
+model.getFunds = () => {
+  return db
+    .asyncQuery("SELECT * FROM funds")
+    .then(data => {
+      console.log("*** Successfully Returned Funds Entry From DB ***");
+      return data;
+    })
+    .catch(err => {
+      console.error("!!! Error Returning Funds Entry From DB !!!");
+      return err;
+    });
+};
 
 model.editFunds = () => {};
 

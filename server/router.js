@@ -51,10 +51,16 @@ router
 router
   .route("/funds")
   .get((req, res) => {
-    // model.getFunds().then(data => {
-    //   //SEND BACK NEW FUND TOTAL
-    // });
-    res.send("GET funds");
+    model
+      .getFunds()
+      .then(data => {
+        console.log("*** Successfully Sent Client Funds Data ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Client Funds Data !!!");
+        res.sendStatus(500);
+      });
   })
   .put((req, res) => {
     model.editFunds().then(data => {
