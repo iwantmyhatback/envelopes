@@ -1,8 +1,8 @@
 import React from "react";
 
-import MainList from "./mainList";
-import SpendForm from "./spendForm";
-import Graph from "./graph";
+import MainList from "./mainList.jsx";
+import SpendForm from "./spendForm.jsx";
+import Graph from "./graph.jsx";
 
 
 class App extends React.Component {
@@ -55,3 +55,5 @@ class App extends React.Component {
   }
 
 }
+
+ReactDOM.render(<App />, document.getElementById("app"));

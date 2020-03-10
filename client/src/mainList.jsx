@@ -1,6 +1,6 @@
 import React from "react";
 
-import Category from "./category";
+import Category from "./category.jsx";
 
 
 const MainList = (props) => {
