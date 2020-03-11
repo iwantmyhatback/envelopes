@@ -28,7 +28,7 @@ router
       });
   })
   .put((req, res) => {
-    console.log("PUT FOR CAT V");
+    console.log("PUT BODY FOR CAT V");
     console.log(req.body);
     model
       .editCategory(req.body)
