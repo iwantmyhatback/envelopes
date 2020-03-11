@@ -19,6 +19,7 @@ class App extends React.Component {
     this.deleteCategoryBound = this.deleteCategory.bind(this);
     this.addCategoryBound = this.addCategory.bind(this);
     this.updateFundsBound = this.updateFunds.bind(this);
+    this.sanitizeBound = this.sanitize.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,11 @@ class App extends React.Component {
       .catch(err => {
         console.log("Error fetching categories");
       });
+  }
+
+  sanitize(input) {
+    const num = input.replace(/[^0-9.]/g, "");
+    return Number(num);
   }
 
   setCategories(cats) {
@@ -116,7 +122,7 @@ class App extends React.Component {
       <div>
         <h1>Envelope</h1>
         <h2>Funds: ${this.state.totalFunds} <button type="button" onClick={() => {this.updateFundsBound(this.state.totalFunds * -1)}}>Clear Funds</button></h2>
-        <AddFundsForm updateFundsHandler={this.updateFundsBound} />
+        <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
         <MainList
           categories={this.state.categories}
@@ -124,8 +130,13 @@ class App extends React.Component {
           updateFundsHandler={this.updateFundsBound}
           deleteHandler={this.deleteCategoryBound}
           addHandler={this.addCategoryBound}
+          sanitize={this.sanitizeBound}
         />
-        <SpendForm categories={this.state.categories} updateCategoryHandler={this.updateCategoryBound} />
+        <SpendForm 
+          categories={this.state.categories}
+          updateCategoryHandler={this.updateCategoryBound}
+          sanitize={this.sanitizeBound}
+        />
         <Graph />
       </div>
     );

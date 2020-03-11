@@ -19,7 +19,8 @@ class AddFundsForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.updateFundsHandler(Number(this.state.amount));
+    const sanitizedAmount = this.props.sanitize(this.state.amount);
+    this.props.updateFundsHandler(sanitizedAmount);
     this.setState({
       amount: ""
     });

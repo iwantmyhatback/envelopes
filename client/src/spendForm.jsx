@@ -25,9 +25,12 @@ class SpendForm extends React.Component {
     let cat = this.state.selectedCategory;
     cat = cat.replace("\\", "");
     cat = JSON.parse(cat);
-    const addAmount = Number(this.state.amount) * -1;
+
+    const sanitizedAmount = this.props.sanitize(this.state.amount);
+
+    const addAmount = sanitizedAmount * -1;
     this.props.updateCategoryHandler(cat, "now", addAmount);
-    this.props.updateCategoryHandler(cat, "spent", Number(this.state.amount));
+    this.props.updateCategoryHandler(cat, "spent", sanitizedAmount);
     this.setState({
       amount: ""
     });

@@ -4,12 +4,18 @@ import Category from "./category.jsx";
 import NewCatForm from "./newCatForm.jsx";
 
 
-const MainList = ({categories, updateCategoryHandler, updateFundsHandler, deleteHandler, addHandler}) => {
+const MainList = ({categories, sanitize, updateCategoryHandler, updateFundsHandler, deleteHandler, addHandler}) => {
 
   {var catItems = categories.map((cat) => {
     return (
       <div key={cat.id}>
-        <Category category={cat} updateCategoryHandler={updateCategoryHandler} updateFundsHandler={updateFundsHandler} deleteHandler={deleteHandler} />
+        <Category
+          category={cat}
+          updateCategoryHandler={updateCategoryHandler} 
+          updateFundsHandler={updateFundsHandler} 
+          deleteHandler={deleteHandler} 
+          sanitize={sanitize}
+        />
       </div>
     );
   })}
