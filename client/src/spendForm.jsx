@@ -22,9 +22,9 @@ class SpendForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const newAmount = this.state.selectedCategory.now - Number(this.state.amount);
-    this.props.updateHandler(this.state.selectedCategory.id, "now", newAmount);
-    this.props.updateHandler(this.state.selectedCategory.id, "spent", Number(this.state.amount));
+    const addAmount = Number(this.state.amount) * -1;
+    this.props.updateCategoryHandler(this.state.selectedCategory, "now", addAmount);
+    this.props.updateCategoryHandler(this.state.selectedCategory, "spent", Number(this.state.amount));
   }
 
   render() {
