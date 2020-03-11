@@ -60,6 +60,7 @@ router
     model
       .getFunds()
       .then(data => {
+        console.log(data);
         console.log("*** Successfully Sent Funds Data To Client ***");
         res.send(data);
       })
@@ -69,10 +70,17 @@ router
       });
   })
   .put((req, res) => {
-    model.editFunds().then(data => {
-      //SEND BACK NEW FUND TOTAL
-    });
-    res.send("PUT funds");
+    console.log(req.body);
+    model
+      .editFunds(req.body)
+      .then(data => {
+        console.log("*** Successfully Sent Updated Funds Data To Client ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Updated Funds Data To Client !!!");
+        res.sendStatus(500);
+      });
   });
 
 module.exports = router;

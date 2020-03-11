@@ -23,3 +23,8 @@ IF NOT EXISTS funds
   total INT
 (20)
 );
+
+INSERT INTO funds
+  (total)
+VALUES
+  (0);
