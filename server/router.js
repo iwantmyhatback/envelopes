@@ -7,11 +7,11 @@ router
     model
       .getAllCategories()
       .then(data => {
-        console.log("*** Successfully Sent Client All Exisiting Category Entries ***");
+        console.log("*** Successfully Sent All Exisiting Category Entries To Client ***");
         res.send(data);
       })
       .catch(err => {
-        console.error("!!! Error Sending Client All Existing Category Entries !!!");
+        console.error("!!! Error Sending All Existing Category Entries To Client !!!");
         res.sendStatus(500);
       });
   })
@@ -19,11 +19,11 @@ router
     model
       .addCategory(req.body)
       .then(data => {
-        console.log("*** Successfully Sent Client Updated Categories ***");
+        console.log("*** Successfully Sent Updated Categories To Client ***");
         res.send(data);
       })
       .catch(err => {
-        console.error("!!! Error Sending Client Updated Categories !!!");
+        console.error("!!! Error Sending Updated Categories To Client !!!");
         res.sendStatus(500);
       });
   })
@@ -32,11 +32,11 @@ router
     model
       .editCategory(req.body)
       .then(data => {
-        console.log("*** Successfully Sent Client Updated Category Values ***");
+        console.log("*** Successfully Sent Updated Category Values To Client ***");
         res.send(data);
       })
       .catch(err => {
-        console.error("!!! Error Sending Client Updated Category Values !!!");
+        console.error("!!! Error Sending Updated Category Values To Client !!!");
         res.sendStatus(500);
       });
   })
@@ -45,11 +45,11 @@ router
     model
       .deleteCategory(req.query)
       .then(data => {
-        console.log("*** Successfully Sent Client Non-Delted Categories ***");
+        console.log("*** Successfully Sent Non-Delted Categories To Client ***");
         res.send(data);
       })
       .catch(err => {
-        console.error("!!! Error Sending Client Non-Delted Categories !!!");
+        console.error("!!! Error Sending Non-Delted Categories To Client !!!");
         res.sendStatus(500);
       });
   });
@@ -60,11 +60,11 @@ router
     model
       .getFunds()
       .then(data => {
-        console.log("*** Successfully Sent Client Funds Data ***");
+        console.log("*** Successfully Sent Funds Data To Client ***");
         res.send(data);
       })
       .catch(err => {
-        console.error("!!! Error Sending Client Funds Data !!!");
+        console.error("!!! Error Sending Funds Data To Client !!!");
         res.sendStatus(500);
       });
   })
