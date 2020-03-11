@@ -19,7 +19,7 @@ class AddFundsForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.updateFundsHandler(this.state.amount);
+    this.props.updateFundsHandler(Number(this.state.amount));
     this.setState({
       amount: ""
     });
