@@ -1,8 +1,10 @@
 import React from "react";
-let d3 = require("d3");
-let jsdom = require("jsdom");
-let document = jsdom.jsdom();
+import * as d3 from "d3";
 let svg = d3.select(document.body).append("svg");
+
+let chart = {
+  const svg = d3.create("svg").attr("viewBox", [0,0,width,height]);
+};
 
 const Graph = props => {
   return <div></div>;
