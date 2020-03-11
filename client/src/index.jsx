@@ -26,7 +26,7 @@ class App extends React.Component {
     axios.get("/funds")
       .then((data) => {
         this.setState({
-          totalFunds: data.data.total
+          totalFunds: data.data[0].total
         });
       })
       .catch((err) => {
@@ -57,7 +57,7 @@ class App extends React.Component {
     })
       .then((data) => {
         this.setState({
-          totalFunds: data.data
+          totalFunds: data.data[0].total
         });
       })
       .catch((err) => {
@@ -84,8 +84,6 @@ class App extends React.Component {
       [field]: newAmount
     })
       .then((data) => {
-        console.log("data received back from server is", data);
-        console.log("data.data received back from server is", data.data);
         this.setCategories(data.data);
       })
       .catch((err) => {
@@ -114,10 +112,10 @@ class App extends React.Component {
       <div>
         <h1>Envelope</h1>
         <h2>Funds: ${this.state.totalFunds}</h2>
-        <AddFundsForm updateHandler={this.updateFundsBound} />
+        <AddFundsForm updateFundsHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
         <MainList categories={this.state.categories} updateCategoryHandler={this.updateCategoryBound} updateFundsHandler={this.updateFundsBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
-        <SpendForm categories={this.state.categories} updateHandler={this.updateCategoryBound} />
+        <SpendForm categories={this.state.categories} updateCategoryHandler={this.updateCategoryBound} />
         <Graph />
       </div>
     );
