@@ -28,6 +28,7 @@ router
       });
   })
   .put((req, res) => {
+    console.log("PUT FOR CAT V");
     console.log(req.body);
     model
       .editCategory(req.body)
@@ -70,6 +71,7 @@ router
       });
   })
   .put((req, res) => {
+    console.log("PUT FOR FUNDS V");
     console.log(req.body);
     model
       .editFunds(req.body)
