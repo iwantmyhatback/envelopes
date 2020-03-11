@@ -5,6 +5,7 @@ import axios from "axios";
 import MainList from "./mainList.jsx";
 import SpendForm from "./spendForm.jsx";
 import Graph from "./graph.jsx";
+import FundsForm from "./addFundsForm.jsx/index.js";
 
 
 class App extends React.Component {
@@ -18,13 +19,14 @@ class App extends React.Component {
     this.updateCategoryBound = this.updateCategory.bind(this);
     this.deleteCategoryBound = this.deleteCategory.bind(this);
     this.addCategoryBound = this.addCategory.bind(this);
+    this.updateFundsBound = this.updateFunds.bind(this);
   }
 
   componentDidMount() {
     axios.get("/funds")
       .then((data) => {
         this.setState({
-          totalFunds: data.data
+          totalFunds: data.data.total
         });
       })
       .catch((err) => {
@@ -47,13 +49,19 @@ class App extends React.Component {
     });
   }
 
-  // getTotalFunds() {
-
-  // }
-
-  // getAllCategories() {
-
-  // }
+  updateFunds(amount) {
+    axios.put("/funds", {
+      total: amount
+    })
+      .then((data) => {
+        this.setState({
+          totalFunds: data.data
+        });
+      })
+      .catch((err) => {
+        console.log("Error updating funds");
+      });
+  }
 
   addCategory(name) {
     axios.post("/cat", {
@@ -73,6 +81,8 @@ class App extends React.Component {
       [field]: amount
     })
       .then((data) => {
+        console.log("data received back from server is", data);
+        console.log("data.data received back from server is", data.data);
         this.setCategories(data.data);
       })
       .catch((err) => {
@@ -101,9 +111,10 @@ class App extends React.Component {
       <div>
         <h1>Envelope</h1>
         <h2>Funds: ${this.state.totalFunds}</h2>
+        <FundsForm updateHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
         <MainList categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
-        <SpendForm categories={this.state.categories} handler={this.updateCategoryBound} />
+        <SpendForm categories={this.state.categories} updateHandler={this.updateCategoryBound} />
         <Graph />
       </div>
     );
