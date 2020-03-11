@@ -10,9 +10,9 @@ IF NOT EXISTS categories
   name VARCHAR
 (255),
   now INT
-(20),
+(20) DEFAULT 0,
   spent INT
-(20),
+(20) DEFAULT 0,
   PRIMARY KEY
 (id)
 );
