@@ -6,7 +6,7 @@ const Category = ({category, updateCategoryHandler, updateFundsHandler, deleteHa
   return (
   <div className="box">
     <h4>{category.name}</h4>
-    <div>${category.now}</div>
+    <h2>${category.now}</h2>
     <br />
     <AddMoneyForm category={category} updateCategoryHandler={updateCategoryHandler} updateFundsHandler={updateFundsHandler} />
     <button type="button" onClick={() => {
