@@ -39,7 +39,7 @@ model.addCategory = postBody => {
 };
 
 model.editCategory = putBody => {
-  if (putBody.now) {
+  if (putBody.now !== undefined) {
     return db
       .asyncQuery("UPDATE categories SET now=? WHERE id=?", [putBody.now, putBody.id])
       .then(data => {
@@ -60,7 +60,7 @@ model.editCategory = putBody => {
         return err;
       });
   }
-  if (putBody.spend) {
+  if (putBody.spend !== undefined) {
     return db
       .asyncQuery("UPDATE categories SET spend=? WHERE id=?", [putBody.spend, putBody.id])
       .then(data => {

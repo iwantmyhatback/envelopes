@@ -25,7 +25,6 @@ class App extends React.Component {
     axios
       .get("/funds")
       .then(data => {
-        console.log(data);
         this.setState({
           totalFunds: data.data[0].total
         });
@@ -55,10 +54,8 @@ class App extends React.Component {
     const newTotal = this.state.totalFunds + amountAdded;
     axios
       .put("/funds", {
-        data: {
-          oldAmount: this.state.totalFunds,
-          newAmount: newTotal
-        }
+        oldAmount: this.state.totalFunds,
+        newAmount: newTotal
       })
       .then(data => {
         this.setState({
@@ -84,9 +81,6 @@ class App extends React.Component {
   }
 
   updateCategory(category, field, amountAdded) {
-    console.log("amt added   ", amountAdded);
-    console.log(category);
-    console.log("feild       ", field);
     const newAmount = category[field] + amountAdded;
 
     axios
