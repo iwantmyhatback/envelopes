@@ -20,8 +20,7 @@ class AddMoneyForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const newAmount = Number(this.state.amount) + this.props.category.now;
-    this.props.updateHandler(this.props.category.id, "now", newAmount);
+    this.props.updateHandler(this.props.category, "now", Number(this.state.amount));
     this.setState({
       amount: ""
     });

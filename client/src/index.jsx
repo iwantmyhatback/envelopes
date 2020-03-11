@@ -49,9 +49,10 @@ class App extends React.Component {
     });
   }
 
-  updateFunds(amount) {
+  updateFunds(amountAdded) {
+    const newTotal = this.state.totalFunds + amountAdded;
     axios.put("/funds", {
-      total: amount
+      total: newTotal
     })
       .then((data) => {
         this.setState({
@@ -75,10 +76,11 @@ class App extends React.Component {
       });
   }
 
-  updateCategory(id, field, amount) {
+  updateCategory(category, field, amountAdded) {
+    const newAmount = category[field] + amountAdded;
     axios.put("/cat", {
-      id: id,
-      [field]: amount
+      id: category.id,
+      [field]: newAmount
     })
       .then((data) => {
         console.log("data received back from server is", data);
@@ -111,7 +113,7 @@ class App extends React.Component {
       <div>
         <h1>Envelope</h1>
         <h2>Funds: ${this.state.totalFunds}</h2>
-        <FundsForm updateHandler={this.updateFundsBound} />
+        <AddFundsForm updateHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
         <MainList categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
         <SpendForm categories={this.state.categories} updateHandler={this.updateCategoryBound} />

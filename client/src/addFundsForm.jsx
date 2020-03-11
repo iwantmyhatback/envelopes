@@ -12,7 +12,9 @@ class AddFundsForm extends React.Component {
   }
 
   onChange(event) {
-
+    this.setState({
+      amount: event.target.value
+    });
   }
 
   onSubmit(event) {
