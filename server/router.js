@@ -28,11 +28,17 @@ router
       });
   })
   .put((req, res) => {
-    model.editCategory(req.body).then(data => {
-      // NEED TO CONDITIONALLY SEE IF IT IS A SPEND OR EDIT UPDATE
-      //SEND BACK ALL CATEGORY DATA
-    });
-    res.send("PUT cat");
+    console.log(req.body);
+    model
+      .editCategory(req.body)
+      .then(data => {
+        console.log("*** Successfully Sent Client Updated Category Values ***");
+        res.send(data);
+      })
+      .catch(err => {
+        console.error("!!! Error Sending Client Updated Category Values !!!");
+        res.sendStatus(500);
+      });
   })
   .delete((req, res) => {
     console.log(req.query);

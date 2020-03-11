@@ -39,7 +39,48 @@ model.addCategory = postBody => {
 };
 
 model.editCategory = putBody => {
-  let instance = [putBody.id].asyncQuery("DELETE FROM categories WHERE id=?", instance);
+  if (putBody.now) {
+    return db
+      .asyncQuery("UPDATE categories SET now=? WHERE id=?", [putBody.now, putBody.id])
+      .then(data => {
+        console.log("*** Successfully Inserted New Category Value Into DB ***");
+        return db
+          .asyncQuery("SELECT * FROM categories")
+          .then(data => {
+            console.log("*** Successfully Returned Updated Category Values From DB ***");
+            return data;
+          })
+          .catch(err => {
+            console.error("!!! Error Returning Updated Category Values From DB !!!");
+            return err;
+          });
+      })
+      .catch(err => {
+        console.log("!!! Error Inserting New Category Value Into DB !!!");
+        return err;
+      });
+  }
+  if (putBody.spend) {
+    return db
+      .asyncQuery("UPDATE categories SET spend=? WHERE id=?", [putBody.spend, putBody.id])
+      .then(data => {
+        console.log("*** Successfully Inserted New Category Value Into DB ***");
+        return db
+          .asyncQuery("SELECT * FROM categories")
+          .then(data => {
+            console.log("*** Successfully Returned Updated Category Values From DB ***");
+            return data;
+          })
+          .catch(err => {
+            console.error("!!! Error Returning Updated Category Values From DB !!!");
+            return err;
+          });
+      })
+      .catch(err => {
+        console.log("!!! Error Inserting New Category Value Into DB !!!");
+        return err;
+      });
+  }
 };
 
 model.deleteCategory = deleteQuery => {
