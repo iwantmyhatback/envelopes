@@ -115,7 +115,7 @@ class App extends React.Component {
         <h2>Funds: ${this.state.totalFunds}</h2>
         <AddFundsForm updateHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
-        <MainList categories={this.state.categories} updateHandler={this.updateCategoryBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
+        <MainList categories={this.state.categories} updateCategoryHandler={this.updateCategoryBound} updateFundsHandler={this.updateFundsBound} deleteHandler={this.deleteCategoryBound} addHandler={this.addCategoryBound} />
         <SpendForm categories={this.state.categories} updateHandler={this.updateCategoryBound} />
         <Graph />
       </div>
