@@ -39,7 +39,7 @@ model.addCategory = postBody => {
 };
 
 model.editCategory = putBody => {
-  if (putBody.now) {
+  if (putBody.now !== undefined) {
     return db
       .asyncQuery("UPDATE categories SET now=? WHERE id=?", [putBody.now, putBody.id])
       .then(data => {
@@ -60,7 +60,7 @@ model.editCategory = putBody => {
         return err;
       });
   }
-  if (putBody.spend) {
+  if (putBody.spend !== undefined) {
     return db
       .asyncQuery("UPDATE categories SET spend=? WHERE id=?", [putBody.spend, putBody.id])
       .then(data => {
@@ -120,6 +120,26 @@ model.getFunds = () => {
     });
 };
 
-model.editFunds = () => {};
+model.editFunds = putBody => {
+  return db
+    .asyncQuery("UPDATE funds SET total=? WHERE total=?", [putBody.newAmount, putBody.oldAmount])
+    .then(data => {
+      console.log("*** Successfully Inserted New Funds Value Into DB ***");
+      return db
+        .asyncQuery("SELECT * FROM funds")
+        .then(data => {
+          console.log("*** Successfully Returned Updated Funds Values From DB ***");
+          return data;
+        })
+        .catch(err => {
+          console.error("!!! Error Returning Updated Funds Values From DB !!!");
+          return err;
+        });
+    })
+    .catch(err => {
+      console.log("!!! Error Inserting New Funds Value Into DB !!!");
+      return err;
+    });
+};
 
 module.exports = model;
