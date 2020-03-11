@@ -10,9 +10,9 @@ const Category = ({category, updateCategoryHandler, updateFundsHandler, deleteHa
     <br />
     <AddMoneyForm category={category} updateCategoryHandler={updateCategoryHandler} />
     <button type="button" onClick={() => {
-      const clearAmount = category.now * -1;
-      updateFundsHandler(clearAmount);
-      updateCategoryHandler(category.id, "now", 0);
+      const addAmount = category.now;
+      updateFundsHandler(addAmount);
+      updateCategoryHandler(category, "now", category.now * -1);
     }}>Clear</button>
     <button type="button" onClick={() => deleteHandler(category.id)}>Delete</button>
   </div>
