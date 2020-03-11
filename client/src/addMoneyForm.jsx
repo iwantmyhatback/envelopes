@@ -18,8 +18,10 @@ class AddMoneyForm extends React.Component {
     });
   }
 
-  onSubmit(event) {
+  onSubmit(event) { // subtract amount from funds and update envelope money
     event.preventDefault();
+    const changeFunds = Number(this.state.amount) * -1;
+    this.props.updateFundsHandler(changeFunds);
     this.props.updateCategoryHandler(this.props.category, "now", Number(this.state.amount));
     this.setState({
       amount: ""

@@ -8,13 +8,17 @@ const Category = ({category, updateCategoryHandler, updateFundsHandler, deleteHa
     <h4>{category.name}</h4>
     <div>${category.now}</div>
     <br />
-    <AddMoneyForm category={category} updateCategoryHandler={updateCategoryHandler} />
+    <AddMoneyForm category={category} updateCategoryHandler={updateCategoryHandler} updateFundsHandler={updateFundsHandler} />
     <button type="button" onClick={() => {
       const addAmount = category.now;
       updateFundsHandler(addAmount);
       updateCategoryHandler(category, "now", category.now * -1);
     }}>Clear</button>
-    <button type="button" onClick={() => deleteHandler(category.id)}>Delete</button>
+    <button type="button" onClick={() => {
+      const addAmount = category.now;
+      updateFundsHandler(addAmount);
+      deleteHandler(category.id);
+    }}>Delete</button>
   </div>
   );
 };
