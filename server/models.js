@@ -60,9 +60,9 @@ model.editCategory = putBody => {
         return err;
       });
   }
-  if (putBody.spend !== undefined) {
+  if (putBody.spent !== undefined) {
     return db
-      .asyncQuery("UPDATE categories SET spend=? WHERE id=?", [putBody.spend, putBody.id])
+      .asyncQuery("UPDATE categories SET spent=? WHERE id=?", [putBody.spent, putBody.id])
       .then(data => {
         console.log("*** Successfully Inserted New Category Value Into DB ***");
         return db
