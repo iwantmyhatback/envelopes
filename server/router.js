@@ -28,8 +28,6 @@ router
       });
   })
   .put((req, res) => {
-    console.log("PUT BODY FOR CAT V");
-    console.log(req.body);
     model
       .editCategory(req.body)
       .then(data => {
@@ -50,6 +48,7 @@ router
         res.send(data);
       })
       .catch(err => {
+        console.error(err);
         console.error("!!! Error Sending Non-Delted Categories To Client !!!");
         res.sendStatus(500);
       });
