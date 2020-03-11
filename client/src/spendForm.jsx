@@ -14,7 +14,10 @@ class SpendForm extends React.Component {
 
   onChange(event) {
     const name = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+    value = value.replace("\\", "");
+    value = JSON.parse(value);
+    console.log("ONCHANGE VALUE", value);
     this.setState({
       [name]: value
     });
@@ -29,7 +32,7 @@ class SpendForm extends React.Component {
 
   render() {
     {var options = this.props.categories.map((cat) => {
-      return <option key={cat.id} name={cat.id} value={cat}>{cat.name}</option>
+      return <option key={cat.id} name={cat.id} value={JSON.stringify(cat)}>{cat.name}</option>
     })}
     return (
     <div>

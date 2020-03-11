@@ -82,6 +82,13 @@ class App extends React.Component {
 
   updateCategory(category, field, amountAdded) {
     const newAmount = category[field] + amountAdded;
+    console.log(JSON.stringify(category));
+    console.log("amountAdded", amountAdded);
+    console.log("newAmount", newAmount);
+    console.log("field is", field);
+    console.log("category at now is", category.now);
+    console.log("category at spent", category.spent);
+    console.log("category at field", category[field]);
     axios
       .put("/cat", {
         id: category.id,
