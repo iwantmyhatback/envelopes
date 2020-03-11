@@ -52,7 +52,8 @@ class App extends React.Component {
   updateFunds(amountAdded) {
     const newTotal = this.state.totalFunds + amountAdded;
     axios.put("/funds", {
-      total: newTotal
+      oldAmount: this.state.totalFunds,
+      newAmount: newTotal
     })
       .then((data) => {
         this.setState({
