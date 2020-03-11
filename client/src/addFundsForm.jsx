@@ -13,13 +13,13 @@ class AddFundsForm extends React.Component {
 
   onChange(event) {
     this.setState({
-      amount: Number(event.target.value)
+      amount: event.target.value
     });
   }
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.updateFundsHandler(this.state.amount);
+    this.props.updateFundsHandler(Number(this.state.amount));
     this.setState({
       amount: ""
     });
