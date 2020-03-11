@@ -18,7 +18,7 @@ class AddFundsForm extends React.Component {
   }
 
   onSubmit(event) {
-
+    
   }
 
   render() {

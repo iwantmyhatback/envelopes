@@ -5,7 +5,7 @@ import axios from "axios";
 import MainList from "./mainList.jsx";
 import SpendForm from "./spendForm.jsx";
 import Graph from "./graph.jsx";
-import FundsForm from "./addFundsForm.jsx";
+import AddFundsForm from "./addFundsForm.jsx";
 
 
 class App extends React.Component {
