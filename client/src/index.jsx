@@ -82,7 +82,6 @@ class App extends React.Component {
 
   updateCategory(category, field, amountAdded) {
     const newAmount = category[field] + amountAdded;
-
     axios
       .put("/cat", {
         id: category.id,
