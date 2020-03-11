@@ -8,11 +8,11 @@ IF NOT EXISTS categories
   id INT
 (9) AUTO_INCREMENT,
   name VARCHAR
-(255),
+(255)NOT NULL,
   now INT
-(20) DEFAULT 0,
+(20) NOT NULL DEFAULT 0,
   spent INT
-(20) DEFAULT 0,
+(20) NOT NULL DEFAULT 0,
   PRIMARY KEY
 (id)
 );
@@ -21,7 +21,7 @@ CREATE TABLE
 IF NOT EXISTS funds
 (
   total INT
-(20)
+(20) NOT NULL
 );
 
 INSERT INTO funds
