@@ -1,10 +1,11 @@
 
 body {
+  /* padding: 10%; */
   font-family: Helvetica, Arial, sans-serif;
 }
 
 #app {
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -16,10 +17,12 @@ header {
 
 #my-envelopes {
   margin-top: 50px;
+  text-align: left;
+  padding-left: 325px;
 }
 
 .box {
-  width: 200px;
+  width: 150px;
   padding: 15px;
   margin: 15px;
   border: 1px solid black;
@@ -30,7 +33,19 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  /* width:  */
+  float: left;
+}
+
+#graph-section {
+  padding-top: 25px;
+  float: right;
+}
+
+#boxes-graph {
+  display: flex;
+  flex-direction: row;
 }
 
 #purchase-form {
