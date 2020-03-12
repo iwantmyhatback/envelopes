@@ -138,24 +138,26 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <h1>Envelope</h1>
-          <h2>
-            Funds: ${this.state.totalFunds}{" "}
-            <button
-              type="button"
-              onClick={() => {
-                this.updateFundsBound(this.state.totalFunds * -1);
-              }}
-            >
-              Clear Funds
-            </button>
-          </h2>
-          <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
-          <SpendForm
-              categories={this.state.categories}
-              updateCategoryHandler={this.updateCategoryBound}
-              sanitize={this.sanitizeBound}
-            />
+          <div id="top-box">
+            <span id="title">Envelopes</span>
+            <h2>
+              Funds: ${this.state.totalFunds}{" "}
+              <button
+                type="button"
+                onClick={() => {
+                  this.updateFundsBound(this.state.totalFunds * -1);
+                }}
+              >
+                Clear Funds
+              </button>
+            </h2>
+            <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
+            <SpendForm
+                categories={this.state.categories}
+                updateCategoryHandler={this.updateCategoryBound}
+                sanitize={this.sanitizeBound}
+              />
+          </div>
         </header>
         <div id="boxes-graph">
           <MainList
