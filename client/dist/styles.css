@@ -76,5 +76,10 @@ header {
 }
 
 .bar {
-  fill: #6bcb63;
+  fill: #6BCB63;
 }
+
+button, input {
+  border-radius: 5px;
+}
+
