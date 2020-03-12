@@ -50,6 +50,7 @@ class Graph extends React.Component {
       }).ticks(5))
       .attr("transform", "translate(" + margin + ", 0)");
     g.append("text")
+      .attr("font-weight", "bold")
       .attr("x", (width / 2) + (margin / 2))
       .attr("y", 0 - margin / 2)
       .text("Past Spending");
@@ -68,7 +69,7 @@ class Graph extends React.Component {
   render() {
     return (
     <div id="graph">
-      <svg id="svg" width="800" height="600"></svg>
+      <svg id="svg" width="650" height="700"></svg>
     </div>
     );
   }

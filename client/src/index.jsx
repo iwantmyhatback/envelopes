@@ -151,22 +151,25 @@ class App extends React.Component {
             </button>
           </h2>
           <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
-          <h3 id="my-envelopes">My envelopes:</h3>
+          <SpendForm
+              categories={this.state.categories}
+              updateCategoryHandler={this.updateCategoryBound}
+              sanitize={this.sanitizeBound}
+            />
         </header>
-        <MainList
-          categories={this.state.categories}
-          updateCategoryHandler={this.updateCategoryBound}
-          updateFundsHandler={this.updateFundsBound}
-          deleteHandler={this.deleteCategoryBound}
-          addHandler={this.addCategoryBound}
-          sanitize={this.sanitizeBound}
-        />
-        <SpendForm
-          categories={this.state.categories}
-          updateCategoryHandler={this.updateCategoryBound}
-          sanitize={this.sanitizeBound}
-        />
-        <Graph categories={this.state.categories} />
+        <div id="boxes-graph">
+          <MainList
+            categories={this.state.categories}
+            updateCategoryHandler={this.updateCategoryBound}
+            updateFundsHandler={this.updateFundsBound}
+            deleteHandler={this.deleteCategoryBound}
+            addHandler={this.addCategoryBound}
+            sanitize={this.sanitizeBound}
+          />
+          <div id="graph-section">
+            <Graph categories={this.state.categories} />
+            </div>
+        </div>
       </div>
     );
   }

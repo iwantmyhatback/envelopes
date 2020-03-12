@@ -20,11 +20,15 @@ const MainList = ({categories, sanitize, updateCategoryHandler, updateFundsHandl
     );
   })}
   return (
-  <div id="main-list">
-    <div className="box">
-      <NewCatForm addHandler={addHandler} />
+  <div>
+    <h3 id="my-envelopes">My envelopes:</h3>
+    <br />
+    <div id="main-list">
+      <div className="box">
+        <NewCatForm addHandler={addHandler} />
+      </div>
+      {catItems}
     </div>
-    {catItems}
   </div>
   );
 };
