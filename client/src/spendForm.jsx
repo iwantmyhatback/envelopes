@@ -68,12 +68,12 @@ class SpendForm extends React.Component {
             <input
               type="text"
               name="amount"
-              placeHolder="Allocation Spent"
+              placeholder="Money Spent"
               value={this.state.amount}
               onChange={this.onChangeBound}
             />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Spend" />
         </form>
       </div>
     );

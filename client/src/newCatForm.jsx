@@ -29,12 +29,12 @@ class NewCatForm extends React.Component {
     return (
       <div>
         <br />
-        <h4>Create a new envelope:</h4>
+        <h4>Create A New Envelope:</h4>
         <form onSubmit={this.onSubmitBound}>
           <input
             type="text"
             name="name"
-            placeHolder="Envelope Name"
+            placeholder="Envelope Name"
             value={this.state.name}
             onChange={this.onChangeBound}
           />
