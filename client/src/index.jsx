@@ -13,7 +13,15 @@ class App extends React.Component {
 
     this.state = {
       totalFunds: 0,
-      categories: [{ id: null, name: null, now: null }]
+      categories: [{ id: null, name: null, now: null }],
+      data: {
+        dataset: [],
+        margins: { top: 10, right: 10, bottom: 10, left: 10 },
+        yAxisLabel: "Spent Money",
+        fill: "steelblue",
+        ticks: 10,
+        barClass: "barChart"
+      }
     };
     this.updateCategoryBound = this.updateCategory.bind(this);
     this.deleteCategoryBound = this.deleteCategory.bind(this);
@@ -36,9 +44,23 @@ class App extends React.Component {
     axios
       .get("/cat")
       .then(data => {
-        this.setState({
-          categories: data.data
-        });
+        this.setState(
+          {
+            categories: data.data
+          },
+          () => {
+            this.setState({
+              data: {
+                dataset: this.state.categories,
+                margins: { top: 10, right: 10, bottom: 10, left: 10 },
+                yAxisLabel: "Spent Money",
+                fill: "steelblue",
+                ticks: 10,
+                barClass: "barChart"
+              }
+            });
+          }
+        );
       })
       .catch(err => {
         console.log("Error fetching categories");
@@ -121,11 +143,17 @@ class App extends React.Component {
     return (
       <div>
         <h1>Envelope</h1>
-        <h2>Funds: ${this.state.totalFunds}
-        <button type="button" 
-        onClick={() => {this.updateFundsBound(this.state.totalFunds * -1)}}>
-          Clear Funds
-          </button></h2>
+        <h2>
+          Funds: ${this.state.totalFunds}{" "}
+          <button
+            type="button"
+            onClick={() => {
+              this.updateFundsBound(this.state.totalFunds * -1);
+            }}
+          >
+            Clear Funds
+          </button>
+        </h2>
         <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
         <h3>My envelopes:</h3>
         <MainList
@@ -136,7 +164,7 @@ class App extends React.Component {
           addHandler={this.addCategoryBound}
           sanitize={this.sanitizeBound}
         />
-        <SpendForm 
+        <SpendForm
           categories={this.state.categories}
           updateCategoryHandler={this.updateCategoryBound}
           sanitize={this.sanitizeBound}
