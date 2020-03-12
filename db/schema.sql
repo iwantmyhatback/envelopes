@@ -1,3 +1,5 @@
+IF EXISTS DROP DATABASE myfundsmanager;
+
 CREATE DATABASE
 IF NOT EXISTS myfundsmanager;
 USE myfundsmanager;
