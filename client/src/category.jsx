@@ -7,7 +7,6 @@ const Category = ({ category, sanitize, updateCategoryHandler, updateFundsHandle
     <div className="box">
       <h3>{category.name}</h3>
       <h2>${category.now}</h2>
-      <br />
       <AddMoneyForm
         category={category}
         sanitize={sanitize}
