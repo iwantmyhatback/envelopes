@@ -1,6 +1,13 @@
 body {
-  /* padding: 10%; */
+  padding-top: 0;
+  margin: 0;
   font-family: Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(to bottom right, #EBD9C7 10%, white 50%);
+}
+
+#title {
+  font-family: "Baloo Da 2", sans-serif;
+  font-size: 60px;
 }
 
 #app {
@@ -9,9 +16,21 @@ body {
 }
 
 header {
-  width: 500px;
+  padding: 40px 0;
+  margin: 0;
+  background-image: url("./img/DeskBackground.jpg");
+  background-size: cover;
+  color: white;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+}
+
+#top-box {
+  padding: 20px 50px 50px 50px;
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.65);
+  margin: 0 auto;
 }
 
 #my-envelopes {
@@ -25,12 +44,14 @@ header {
   padding: 15px;
   margin: 15px;
   border: 1px solid black;
+  background-color: white;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 #main-list {
+  padding-left: 30px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -57,7 +78,7 @@ header {
 }
 
 .bar {
-  fill: slateblue;
+  fill: #6BCB63;
 }
 
 /*-----------------------*/
