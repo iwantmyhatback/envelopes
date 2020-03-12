@@ -27,18 +27,22 @@ class AddFundsForm extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <form onSubmit={this.onSubmitBound}>
         <label>
           Add funds: $
-          <input type="text" name="amount" value={this.state.amount} onChange={this.onChangeBound} />
+          <input
+            type="text"
+            name="amount"
+            placeHolder="Current Money"
+            value={this.state.amount}
+            onChange={this.onChangeBound}
+          />
           <input type="submit" value="Add" />
         </label>
       </form>
     );
   }
-
 }
-
 
 export default AddFundsForm;

@@ -27,17 +27,23 @@ class NewCatForm extends React.Component {
 
   render() {
     return (
-    <div>
-      <h4>Create a new envelope:</h4>
-      <form onSubmit={this.onSubmitBound}>
-        <input type="text" name="name" value={this.state.name} onChange={this.onChangeBound} />
+      <div>
         <br />
-        <input type="submit" value="Create" />
-      </form>
-    </div>
+        <h4>Create a new envelope:</h4>
+        <form onSubmit={this.onSubmitBound}>
+          <input
+            type="text"
+            name="name"
+            placeHolder="Envelope Name"
+            value={this.state.name}
+            onChange={this.onChangeBound}
+          />
+          <br />
+          <input type="submit" value="Create" />
+        </form>
+      </div>
     );
   }
-
 }
 
 export default NewCatForm;

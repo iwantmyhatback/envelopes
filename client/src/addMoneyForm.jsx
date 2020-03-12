@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class AddMoneyForm extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,8 @@ class AddMoneyForm extends React.Component {
     });
   }
 
-  onSubmit(event) { // subtract amount from funds and update envelope money
+  onSubmit(event) {
+    // subtract amount from funds and update envelope money
     event.preventDefault();
     const sanitizedAmount = this.props.sanitize(this.state.amount);
     const changeFunds = sanitizedAmount * -1;
@@ -33,14 +33,19 @@ class AddMoneyForm extends React.Component {
     return (
       <form onSubmit={this.onSubmitBound}>
         <label>
-          Add amount $
-          <input type="text" name="amount" value={this.state.amount} onChange={this.onChangeBound} />
+          Set Aside Money
+          <input
+            type="text"
+            name="amount"
+            placeHolder="Amount"
+            value={this.state.amount}
+            onChange={this.onChangeBound}
+          />
         </label>
         <input type="submit" value="Add" />
       </form>
     );
   }
-
 }
 
 export default AddMoneyForm;
