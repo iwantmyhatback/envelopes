@@ -84,4 +84,17 @@ router
       });
   });
 
+router.get("/graph", (req, res) => {
+  model
+    .getAllCategories()
+    .then(data => {
+      console.log("*** Successfully Sent All Exisiting Category Entries To Client For Graph ***");
+      res.send(data);
+    })
+    .catch(err => {
+      console.error("!!! Error Sending All Existing Category Entries To Client For Graph!!!");
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
