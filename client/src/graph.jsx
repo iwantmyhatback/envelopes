@@ -59,7 +59,7 @@ class Graph extends React.Component {
           .tickFormat(val => {
             return "$" + val;
           })
-          .ticks(5)
+          .ticks(10)
       )
       .attr("transform", "translate(" + margin + ", 0)");
     g.append("text")
