@@ -1,11 +1,25 @@
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  padding-left: 50px;
+}
+
+#app {
+  width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#my-envelopes {
+  margin-top: 50px;
 }
 
 .box {
-  width: 300px;
+  width: 200px;
   padding: 15px;
   margin: 15px;
   border: 1px solid black;
@@ -16,6 +30,14 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#purchase-form {
+  padding-top: 40px;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .bar {

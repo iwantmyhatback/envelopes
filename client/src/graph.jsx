@@ -8,19 +8,21 @@ class Graph extends React.Component {
     this.drawGraph();
   }
 
+  componentDidUpdate() {
+    this.drawGraph();
+  }
+
   drawGraph() {
 
     //////////////////////////////////////////////////////////////////////
     /////////////// pull down props here and extract data ////////////////
     //////////////////////////////////////////////////////////////////////
 
-    var data = [
-      {name: "utilities", spent: 50},
-      {name: "rent", spent: 700},
-      {name: "groceries", spent: 150}
-    ];
+    var data = this.props.categories;
 
     var svg = d3.select("svg");
+
+    document.getElementById("svg").innerHTML = "";
 
     var margin = 100;
     var width = svg.attr("width") - 2*margin;
@@ -66,12 +68,14 @@ class Graph extends React.Component {
   render() {
     return (
     <div id="graph">
-      <svg width="800" height="600"></svg>
+      <svg id="svg" width="800" height="600"></svg>
     </div>
     );
   }
 
 }
+
+export default Graph;
 
 //     this.state = {
 //       d3: {

@@ -21,16 +21,25 @@ class SpendForm extends React.Component {
   }
 
   onSubmit(event) {
+    console.log("ONSUBMIT");
     event.preventDefault();
-    let cat = this.state.selectedCategory;
-    cat = cat.replace("\\", "");
-    cat = JSON.parse(cat);
+    var id = Number(this.state.selectedCategory);
+
+    var category;
+    for (var cat of this.props.categories) {
+      if (cat.id === id) {
+        category = cat;
+      }
+    }
 
     const sanitizedAmount = this.props.sanitize(this.state.amount);
 
     const addAmount = sanitizedAmount * -1;
-    this.props.updateCategoryHandler(cat, "now", addAmount);
-    this.props.updateCategoryHandler(cat, "spent", sanitizedAmount);
+
+    console.log("addAmount, sanitized", addAmount, sanitizedAmount);
+
+    this.props.updateCategoryHandler(category, "now", addAmount);
+    this.props.updateCategoryHandler(category, "spent", sanitizedAmount);
     this.setState({
       amount: ""
     });
@@ -38,10 +47,10 @@ class SpendForm extends React.Component {
 
   render() {
     {var options = this.props.categories.map((cat) => {
-      return <option key={cat.id} name={cat.id} value={JSON.stringify(cat)}>{cat.name}</option>
+      return <option key={cat.id} name={cat.id} value={cat.id}>{cat.name}</option>
     })}
     return (
-    <div>
+    <div id="purchase-form">
       <h3>Record a purchase:</h3>
       <form onSubmit={this.onSubmitBound}>
         <select name="selectedCategory" onChange={this.onChangeBound}>
