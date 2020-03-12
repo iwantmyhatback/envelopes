@@ -83,8 +83,8 @@ header {
 
 /*-----------------------*/
 
-button {
-  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1); */
+button, input {
+  border-radius: 5px;
 }
 
 :hover {
