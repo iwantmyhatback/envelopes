@@ -169,7 +169,7 @@ class App extends React.Component {
           updateCategoryHandler={this.updateCategoryBound}
           sanitize={this.sanitizeBound}
         />
-        {/* <Graph node={this.state.data} /> */}
+        <Graph categories={this.state.categories} />
       </div>
     );
   }
