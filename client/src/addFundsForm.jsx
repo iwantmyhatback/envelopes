@@ -34,7 +34,7 @@ class AddFundsForm extends React.Component {
           <input
             type="text"
             name="amount"
-            placeHolder="Current Money"
+            placeholder="Current Money"
             value={this.state.amount}
             onChange={this.onChangeBound}
           />
