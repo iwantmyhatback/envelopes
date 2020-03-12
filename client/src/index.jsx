@@ -13,15 +13,7 @@ class App extends React.Component {
 
     this.state = {
       totalFunds: 0,
-      categories: [{ id: null, name: null, now: null }],
-      data: {
-        dataset: [],
-        margins: { top: 10, right: 10, bottom: 10, left: 10 },
-        yAxisLabel: "Spent Money",
-        fill: "steelblue",
-        ticks: 10,
-        barClass: "barChart"
-      }
+      categories: [{ id: null, name: null, now: 0, spent: 0 }]
     };
     this.updateCategoryBound = this.updateCategory.bind(this);
     this.deleteCategoryBound = this.deleteCategory.bind(this);
@@ -110,6 +102,9 @@ class App extends React.Component {
 
   updateCategory(category, field, amountAdded) {
     const newAmount = category[field] + amountAdded;
+
+    console.log("UPDATED CATEGORY new amount = ", newAmount);
+
     axios
       .put("/cat", {
         id: category.id,
@@ -142,20 +137,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Envelope</h1>
-        <h2>
-          Funds: ${this.state.totalFunds}{" "}
-          <button
-            type="button"
-            onClick={() => {
-              this.updateFundsBound(this.state.totalFunds * -1);
-            }}
-          >
-            Clear Funds
-          </button>
-        </h2>
-        <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
-        <h3>My envelopes:</h3>
+        <header>
+          <h1>Envelope</h1>
+          <h2>
+            Funds: ${this.state.totalFunds}{" "}
+            <button
+              type="button"
+              onClick={() => {
+                this.updateFundsBound(this.state.totalFunds * -1);
+              }}
+            >
+              Clear Funds
+            </button>
+          </h2>
+          <AddFundsForm sanitize={this.sanitizeBound} updateFundsHandler={this.updateFundsBound} />
+          <h3 id="my-envelopes">My envelopes:</h3>
+        </header>
         <MainList
           categories={this.state.categories}
           updateCategoryHandler={this.updateCategoryBound}
