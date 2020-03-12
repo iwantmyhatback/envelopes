@@ -46,27 +46,38 @@ class SpendForm extends React.Component {
   }
 
   render() {
-    {var options = this.props.categories.map((cat) => {
-      return <option key={cat.id} name={cat.id} value={cat.id}>{cat.name}</option>
-    })}
+    {
+      var options = this.props.categories.map(cat => {
+        return (
+          <option key={cat.id} name={cat.id} value={cat.id}>
+            {cat.name}
+          </option>
+        );
+      });
+    }
     return (
-    <div id="purchase-form">
-      <h3>Record a purchase:</h3>
-      <form onSubmit={this.onSubmitBound}>
-        <select name="selectedCategory" onChange={this.onChangeBound}>
-          <option>Select</option>
-          {options}
-        </select>
-        <label>
-          Amount: $
-          <input type="text" name="amount" value={this.state.amount} onChange={this.onChangeBound} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+      <div id="purchase-form">
+        <h3>Record a purchase:</h3>
+        <form onSubmit={this.onSubmitBound}>
+          <select name="selectedCategory" onChange={this.onChangeBound}>
+            <option>Select</option>
+            {options}
+          </select>
+          <label>
+            Amount: $
+            <input
+              type="text"
+              name="amount"
+              placeHolder="Allocation Spent"
+              value={this.state.amount}
+              onChange={this.onChangeBound}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
-
 }
 
 export default SpendForm;
