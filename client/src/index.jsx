@@ -141,7 +141,7 @@ class App extends React.Component {
           updateCategoryHandler={this.updateCategoryBound}
           sanitize={this.sanitizeBound}
         />
-        <Graph />
+        <Graph categories={this.state.categories} />
       </div>
     );
   }
