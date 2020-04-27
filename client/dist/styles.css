@@ -47,7 +47,7 @@ header {
   background-color: white;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 #main-list {
@@ -76,10 +76,10 @@ header {
 }
 
 .bar {
-  fill: #6BCB63;
+  fill: #6bcb63;
 }
 
-button, input {
+button,
+input {
   border-radius: 5px;
 }
-

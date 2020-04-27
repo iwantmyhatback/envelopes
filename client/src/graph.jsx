@@ -89,7 +89,7 @@ class Graph extends React.Component {
   render() {
     return (
       <div id="graph">
-        <svg id="svg" width="750" height="700"></svg>
+        <svg id="svg" width="850" height="700"></svg>
       </div>
     );
   }

@@ -60,7 +60,6 @@ router
     model
       .getFunds()
       .then(data => {
-        console.log(data);
         console.log("*** Successfully Sent Funds Data To Client ***");
         res.send(data);
       })

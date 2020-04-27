@@ -1,18 +1,18 @@
-let express = require("express");
-let morgan = require("morgan");
-let bodyParser = require("body-parser");
-let router = require("./router.js");
-let path = require("path");
+let express = require('express');
+let morgan = require('morgan');
+let bodyParser = require('body-parser');
+let router = require('./router.js');
+let path = require('path');
 let app = express();
-let port = 5555;
+let port = process.env.PORT || 5555;
 
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, "../client/dist/")));
+app.use(express.static(path.join(__dirname, '../client/dist/')));
 
-app.use("/", router);
+app.use('/', router);
 
 app.listen(port, () => {
-  console.log("*** Ayyyyy We're Listening On Port 5555 ***");
+  console.log(`*** Listening On ${port} 5555 ***`);
 });

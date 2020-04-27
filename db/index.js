@@ -1,22 +1,21 @@
-let mysql = require("mysql");
-let config = require("./config.js");
-let Promise = require("bluebird");
+let mysql = require('mysql');
+let config = require('./config.js');
+let Promise = require('bluebird');
 
 let connection = mysql.createConnection({
   host: config.host,
   user: config.user,
   password: config.password,
-  database: config.database
+  database: config.database,
 });
 
 let asyncQuery = Promise.promisify(connection.query).bind(connection);
 
-connection.connect(err => {
+connection.connect((err) => {
   if (err) {
-    // console.error(err);
-    console.error("!!! Connection Error !!!");
+    console.error('!!! Connection Error !!!');
   } else {
-    console.log("*** Connection Success! ***");
+    console.log('*** Connection Success! ***');
   }
 });
 
