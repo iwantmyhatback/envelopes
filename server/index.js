@@ -14,5 +14,5 @@ app.use(express.static(path.join(__dirname, '../client/dist/')));
 app.use('/', router);
 
 app.listen(port, () => {
-  console.log(`*** Listening On port ${port} ***`);
+  console.log(`*** Listening On Port ${port} ***`);
 });

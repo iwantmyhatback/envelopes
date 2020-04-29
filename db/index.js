@@ -13,6 +13,7 @@ let asyncQuery = Promise.promisify(connection.query).bind(connection);
 
 connection.connect((err) => {
   if (err) {
+    console.error(err);
     console.error('!!! Connection Error !!!');
   } else {
     console.log('*** Connection Success! ***');
